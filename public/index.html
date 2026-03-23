@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaiTap7 - CI/CD Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 CI/CD Pipeline Demo</h1>
+            <p class="subtitle">Deployed automatically with GitLab Pages</p>
+        </header>
+
+        <main>
+            <section class="info-card">
+                <h2>📌 Thông tin Project</h2>
+                <ul>
+                    <li><strong>Bài tập:</strong> BaiTap7 - CI/CD Pipeline với GitLab</li>
+                    <li><strong>Công nghệ:</strong> GitLab CI/CD + GitLab Pages</li>
+                    <li><strong>Trạng thái:</strong> <span class="status">✅ Deployed</span></li>
+                </ul>
+            </section>
+
+            <section class="info-card">
+                <h2>🔄 CI/CD Concepts</h2>
+                <div class="concept-grid">
+                    <div class="concept">
+                        <h3>CI - Continuous Integration</h3>
+                        <p>Tự động build & test code mỗi khi push</p>
+                    </div>
+                    <div class="concept">
+                        <h3>CD - Continuous Deployment</h3>
+                        <p>Tự động deploy lên production sau khi CI pass</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="info-card">
+                <h2>📊 Pipeline Components</h2>
+                <div class="pipeline-flow">
+                    <div class="stage">📥 Commit</div>
+                    <div class="arrow">→</div>
+                    <div class="stage">🔨 Build</div>
+                    <div class="arrow">→</div>
+                    <div class="stage">🧪 Test</div>
+                    <div class="arrow">→</div>
+                    <div class="stage">🚀 Deploy</div>
+                </div>
+            </section>
+
+            <section class="info-card">
+                <h2>👥 Team Members</h2>
+                <ul>
+                    <li>Thành viên 1 - Cấu hình GitLab CI</li>
+                    <li>Thành viên 2 - Tạo Static Website</li>
+                    <li>Thành viên 3 - Documentation</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>Last updated: <span id="timestamp"></span></p>
+            <p>Powered by GitLab Pages 🦊</p>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
