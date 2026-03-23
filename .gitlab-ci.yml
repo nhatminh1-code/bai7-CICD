@@ -1,0 +1,62 @@
+# Định nghĩa các stages trong pipeline
+stages:
+  - build
+  - test
+  - deploy
+
+# Biến môi trường chung
+variables:
+  PROJECT_NAME: "BaiTap7-CICD"
+
+# ============================================
+# STAGE 1: BUILD
+# ============================================
+build_job:
+  stage: build
+  script:
+    - echo " Starting build process..."
+    - echo "Project: $PROJECT_NAME"
+    - echo "Branch: $CI_COMMIT_BRANCH"
+    - echo "Commit: $CI_COMMIT_SHA"
+    - echo " Build completed successfully!"
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# ============================================
+# STAGE 2: TEST
+# ============================================
+test_job:
+  stage: test
+  script:
+    - echo " Running tests..."
+    - echo "Checking if public directory exists..."
+    - test -d public && echo "✅ public/ directory found" || exit 1
+    - echo "Checking if index.html exists..."
+    - test -f public/index.html && echo " index.html found" || exit 1
+    - echo "Checking if styles.css exists..."
+    - test -f public/styles.css && echo " styles.css found" || exit 1
+    - echo " All tests passed!"
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# ============================================
+# STAGE 3: DEPLOY (GitLab Pages)
+# ============================================
+pages:
+  stage: deploy
+  script:
+    - echo " Deploying to GitLab Pages..."
+    - echo "Pipeline ID: $CI_PIPELINE_ID"
+    - echo "Triggered by: $GITLAB_USER_NAME"
+    - echo "Deploy time: $(date)"
+    - ls -la public/
+    - echo " Deployment completed!"
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  environment:
+    name: production
+    url: https://$CI_PROJECT_NAMESPACE.gitlab.io/$CI_PROJECT_NAME
